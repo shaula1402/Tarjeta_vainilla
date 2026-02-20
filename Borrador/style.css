@@ -1,0 +1,248 @@
+/* 1. DEFINICIÓN DE VARIABLES (La base de todo) */
+
+:root {
+    /* MODO DÍA */
+    --bg-body: #f4f4f7;
+    --bg-cv: #ffffff;
+    --primary: #562155;
+    /* Púrpura Profundo */
+    --secondary: #72577c;
+    /* Morado Medio */
+    --accent-bg: #8e8ca3;
+    /* Gris Azulado */
+    --divider: #a9c2c9;
+    /* Azul Grisáceo */
+    --highlight: #c5f7f0;
+    /* Menta Gélido */
+    --text-main: #333333;
+    --text-light: #666666;
+    --white: #ffffff;
+}
+
+[data-theme="dark"] {
+    /* MODO NOCHE */
+    --bg-body: #0d0d12;
+    --bg-cv: #1a1a2e;
+    --primary: #c5f7f0;
+    /* El menta brilla en la oscuridad */
+    --secondary: #a9c2c9;
+    --accent-bg: #2d2d44;
+    --divider: #562155;
+    --highlight: #72577c;
+    --text-main: #e0e0e0;
+    --text-light: #b0b0b0;
+    --white: #1a1a2e;
+}
+
+
+/* 2. ESTILOS BASE */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    padding: 20px;
+}
+
+.cv-container {
+    max-width: 900px;
+    background: var(--bg-cv);
+    margin: 20px auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    /* Evita que el contenido se salga */
+}
+
+
+/* 3. ENCABEZADO */
+
+header {
+    display: flex;
+    padding: 40px;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+    /* Responsivo para pantallas chicas */
+}
+
+.header-info {
+    flex: 2;
+    min-width: 300px;
+}
+
+.header-info h1 {
+    font-size: 40px;
+    color: var(--primary);
+    margin-bottom: 5px;
+}
+
+.header-info h3 {
+    color: var(--secondary);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.contact-bar {
+    display: flex;
+    gap: 15px;
+    font-size: 13px;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.header-photo img {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    border: 5px solid var(--highlight);
+    object-fit: cover;
+}
+
+
+/* 4. BARRA DE PROGRAMAS (La franja horizontal) */
+
+.programs-bar {
+    background-color: var(--accent-bg);
+    color: var(--white);
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.programs-bar h2 {
+    color: var(--white) !important;
+    border-bottom: 2px solid var(--highlight);
+    margin-right: 30px;
+    border-left: none !important;
+    padding: 0 0 5px 0 !important;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    flex-grow: 1;
+    gap: 10px 30px;
+}
+
+.skill {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.dots {
+    color: var(--highlight);
+    letter-spacing: 2px;
+}
+
+
+/* 5. CUERPO PRINCIPAL (Columnas) */
+
+main {
+    display: flex;
+    padding: 40px;
+    gap: 40px;
+}
+
+.main-left {
+    flex: 2;
+}
+
+.sidebar {
+    flex: 1;
+    border-left: 2px solid var(--divider);
+    padding-left: 20px;
+}
+
+h2 {
+    font-size: 20px;
+    color: var(--primary);
+    margin: 25px 0 15px 0;
+    border-left: 5px solid var(--divider);
+    padding-left: 15px;
+}
+
+.job {
+    margin-bottom: 25px;
+}
+
+.company {
+    font-weight: bold;
+    color: var(--primary);
+    font-size: 16px;
+}
+
+.role {
+    color: var(--secondary);
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
+p {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+
+/* 6. INTERRUPTOR (Toggle) */
+
+.theme-switch-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: var(--primary);
+}
+
+input:checked+.slider:before {
+    transform: translateX(26px);
+}
